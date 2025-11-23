@@ -101,7 +101,7 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
             z-index: 1000;
             font-size: 11px;
-            /* WICHTIG: Definiert den Randabstand, wenn die Legende rechts unten platziert wird */
+            /* WICHTIG: Definiert den Randabstand auf Desktops/größeren Geräten */
             margin-right: 10px; 
             margin-bottom: 10px;
         }
@@ -153,16 +153,16 @@
                 width: 100%;
             }
             
-            /* Zoom-Kontrolle auf Handys etwas nach unten verschieben, damit sie nicht mit dem Seiten-Toggle kollidiert */
-            /* Leaflet topright Container ist standardmäßig 10px vom Rand entfernt */
+            /* Zoom-Kontrolle auf Handys anpassen */
              .leaflet-top.leaflet-right {
                 top: 50px;
             }
             
             /* Legende auf Handys anpassen */
             .leaflet-bottom.leaflet-right {
-                bottom: 20px; /* Fügt einen Abstand zur unteren Kante hinzu */
-                right: 10px; /* Standardabstand von Leaflet zur rechten Kante */
+                /* WICHTIGE ÄNDERUNG: Erhöht den Abstand vom unteren Rand */
+                bottom: 50px; 
+                right: 10px;
             }
         }
     </style>
