@@ -320,12 +320,12 @@
     var legend = L.control({position: 'bottomright'});
     legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'legend');
-        div.innerHTML += '<div style="font-weight:bold; margin-bottom:5px;">Legende</div>';
-        div.innerHTML += '<div class="legend-item"><div class="color-box" style="display: flex; justify-content: center; align-items: center; width: 15px; height: 15px;"><i class="fas fa-bolt" style="font-size: 10px;"></i></div>Transformator</div>';
-        div.innerHTML += '<div class="legend-item"><div class="color-box" style="background: green;"></div>Hohes Potenzial (Wenig Auslastung)</div>';
-        div.innerHTML += '<div class="legend-item"><div class="color-box" style="background: yellow;"></div>Mittleres Potenzial</div>';
-        div.innerHTML += '<div class="legend-item"><div class="color-box" style="background: red;"></div>Niedriges Potenzial (Viel Auslastung)</div>';
-        div.innerHTML += '<div class="legend-item"><div class="color-box" style="background: blue; border-radius:50%;"></div>Solarpanel</div>';
+        div.innerHTML += '<div style="font-weight:bold; margin-bottom:5px;">Legend</div>';
+        div.innerHTML += '<div class="legend-item"><div class="color-box" style="display: flex; justify-content: center; align-items: center; width: 5px; height: 15px;"><i class="fas fa-bolt" style="font-size: 10px;"></i></div>Transformer</div>';
+        div.innerHTML += '<div class="legend-item"><div class="color-box" style="background: green;"></div>High Potential (Low Load)</div>';
+        div.innerHTML += '<div class="legend-item"><div class="color-box" style="background: yellow;"></div>Medium Potential</div>';
+        div.innerHTML += '<div class="legend-item"><div class="color-box" style="background: red;"></div>Low Potential (High Load)</div>';
+        div.innerHTML += '<div class="legend-item"><div class="color-box" style="background: blue; border-radius:50%;"></div>Solar Panel</div>';
         return div;
     };
     legend.addTo(map);
