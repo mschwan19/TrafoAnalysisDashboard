@@ -91,20 +91,19 @@
             margin-top: 50px;
         }
 
-        /* ANPASSUNGEN: LEGEND, MOBILE SIDEBAR */
+        /* ANPASSUNGEN: LEGEND */
         
-        /* Legende kleiner und links unten positionieren */
+        /* Legende kleiner machen und rechts unten positionieren */
         .legend {
             background: white;
             padding: 8px; 
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            position: absolute;
-            bottom: 30px;
-            left: 10px; 
-            right: unset;
             z-index: 1000;
             font-size: 11px;
+            /* WICHTIG: Definiert den Randabstand, wenn die Legende rechts unten platziert wird */
+            margin-right: 10px; 
+            margin-bottom: 10px;
         }
         .legend-item { margin-bottom: 3px; }
         .color-box { width: 15px; height: 15px; margin-right: 5px; opacity: 0.7; }
@@ -155,13 +154,15 @@
             }
             
             /* Zoom-Kontrolle auf Handys etwas nach unten verschieben, damit sie nicht mit dem Seiten-Toggle kollidiert */
+            /* Leaflet topright Container ist standardmäßig 10px vom Rand entfernt */
              .leaflet-top.leaflet-right {
                 top: 50px;
             }
             
-            /* Legende auf Handys etwas nach oben verschieben, damit sie nicht von Systemleisten überdeckt wird */
-            .leaflet-bottom.leaflet-left {
-                bottom: 20px; 
+            /* Legende auf Handys anpassen */
+            .leaflet-bottom.leaflet-right {
+                bottom: 20px; /* Fügt einen Abstand zur unteren Kante hinzu */
+                right: 10px; /* Standardabstand von Leaflet zur rechten Kante */
             }
         }
     </style>
@@ -211,9 +212,10 @@
     // Event Listener für den Button
     document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
 
-    // Initialisierung des Maps
-    // WICHTIGE ÄNDERUNG: Deaktivierung des Standard-ZoomControls und manuelle Hinzufügung rechts oben
+    // Initialisierung des Maps: Standard-ZoomControl deaktivieren
     var map = L.map('map', {zoomControl: false}).setView([49.044, 9.197], 14);
+    
+    // Zoom-Control manuell rechts oben hinzufügen
     L.control.zoom({position: 'topright'}).addTo(map);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -314,8 +316,8 @@
         });
     });
     
-    // Legende zur Karte hinzufügen (position: bottomleft durch JS festgelegt)
-    var legend = L.control({position: 'bottomleft'});
+    // Legende zur Karte hinzufügen (Position: bottomright durch JS festgelegt)
+    var legend = L.control({position: 'bottomright'});
     legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'legend');
         div.innerHTML += '<div style="font-weight:bold; margin-bottom:5px;">Legende</div>';
